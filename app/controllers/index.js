@@ -1,12 +1,12 @@
 
 var viewImg= Ti.UI.createImageView({
-	height:'58%',
+	height:'80%',
 	width:'90%',
 	backgroundColor:"#F0FFFF",
 	borderColor:"black",
 	borderRadius:10,
 	borderWidth:1,
-	top:"35%"
+	top:"20%"
 });
 $.viewImage.add(viewImg);
 
@@ -27,17 +27,33 @@ function AbrirGaleria(){
 				//Agregar a view la imagen 
 				viewImg.setImage(event.media);
 				//Convertir a base 64
-				var imagenStrin=Ti.Utils.base64encode(image,'utf8').toString();
-				
-				console.log("Base 64:\n____   "+ imagenStrin);
+				var imagenStrin=Ti.Utils.base64encode(image).toString();
 
+				var jsonss= {
+					source:imagenStrin
+				  };
+				jsonss = JSON.stringify(jsonss);
 
-                        /*Alerta para mostar codigo de base 64 
-				setTimeout(function(e){
-				 var al=	alert('images:   ' +JSON.stringify(imagenStrin));
-				 console.log('images:   ' +JSON.stringify(imagenStrin));
-				 console.log(al);
-				},1000);*/
+				console.log('_________', jsonss);
+                        /*------------
+				$.btnEnviar.addEventListener('click',function(e){
+                           var xhr=Ti.Network.createHTTPClient({
+                            onload: function(e){
+				     var result=JSON.parse(this.responseText);
+				     alert(JSON.stringify(result));
+				    },
+				    onerror:function(e){
+				     alert(e.error);
+				     console.log('________miguel____ '+imagenStrin);
+				    },
+				    timeout:5000
+				   });
+				   xhr.open('POST', 'https://ko7afa9vef.execute-api.us-east-2.amazonaws.com/SDA');
+				   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				   xhr.send({
+                               "source":imagenStrin
+				   });
+				});_____________*/
 			
 			}else{
 				
@@ -66,61 +82,56 @@ function CapturaFoto(e){
 };
 
 
+var json64;
+
 function camaraFotos(){
 	Ti.Media.showCamera({
 		//Permisos para la camara
 		saveToPhotoGallery:true,
 		allowEditing:false,
 		autohide:false,
-
 		success:function(event){
-         
 		var ImageFactory= require('ti.imagefactory');
-		var blob=image;
-		viewImg.image=event.blob;
-			                 
-		newBlob=ImageFactory.compress(blob, 0.25);
-		var imageSave=Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,'image.png');
-		f=Titanium.Filesystem.getFile(imageSave); 
-		f.write(newBlob);   
-			
-	      // Crear archivo txt y almacena la cadena de imgane a base_64
-		var fDemo=Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,'Demo.txt');
-		fDemo.write(JSON.stringify(newBlob));
-		
-		/*______________________
 		var image=event.media;
-		viewImg.image=event.media;
-		var base64= Ti.Utils.base64encode(image).toString();
-		//var base64_De= Ti.Utils.base64decode(base64);
-		var imageSave=Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,'image.png');
-            //imageSave.write(image);   
-		// Crear archivo txt y almacena la cadena de imgane a base_64
+		viewImg.image=image;
+			                 
+		newBlob=ImageFactory.compress(image, 0.25);
+		var img=Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,'image.png');
+		img.write(newBlob);
+		 //convertir imagen a base64
+		var base64=Ti.Utils.base64encode(newBlob).toString();
+		//convertir base64 a json
+		var json64={
+			"source":base64
+		};
+		//json64=JSON.stringify(json64);
+		//console.log("Datos", json64);
+            $.btnEnviar.addEventListener('click', function(){
+                var xhr=Ti.Network.createHTTPClient({
+                 onload:function(e){
+
+			var result=JSON.parse(this.responseText);
+			console.log('Resultado_________ ',result)
+			alert(JSON.stringify(result));
+			
+		     },
+		     onsendstream: function(e){
+			Ti.API.info('______Enviando informaciòn:  ' + e.progress);
+		     },
+		     onerror: function(e){
+                   alert("Error\n:"+ e.error);
+		     },
+		     timeout:10000
+		    });
+		    xhr.open('POST', 'https://ko7afa9vef.execute-api.us-east-2.amazonaws.com/SDA');
+		    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		    xhr.send(JSON.stringify(json64));
+		  });
+	      /* Crear archivo txt y almacena la cadena de imgane a base_64
 		var f=Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,'Demo.txt');
-		f.write(JSON.stringify(base64));
-		--------------------------- */
-             
+		f.write(json64);*/
 		},
 	});
 };
-
-
-function EnviarDatos(e){
-
-
-}
-
-
-
-
-
-//funcion para validad si hay internte 
-function validaInternet(){
-	if(Ti.Network.networktype==Ti.Network.NETWORK_NONE){
-		alert('No tienes acceso a intenet');
-	};
-};
-validaInternet();
-
-
+ 
 $.index.open();

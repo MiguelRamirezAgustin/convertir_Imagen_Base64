@@ -3,9 +3,11 @@
 		 <View id="viewImage" backgroundColor="#49A4AB" height="75%" width="100%">
 		 	
 		 </View>
-		 <View id="viewBotones" backgroundColor="#49A4AB" height="25%" width="100%" layout="horizontal">
-		 	 <Button id="btnGaleria" onClick="AbrirGaleria">Galeria</Button>
-		 	 <Button id="btnCaptura" onClick="CapturaFoto">Camara</Button>
+		 <View id="viewBotones" backgroundColor="#49A4AB" height="25%" width="100%" 
+		       layout="horizontal">
+		 	 <Button id="btnCaptura" onClick="CapturaFoto"></Button>
+		 	 <Button id="btnEnviar" onClick="EnviarDatos"></Button>
+		 	 <Button id="btnGaleria" onClick="AbrirGaleria"></Button>
 		 </View>
 	</Window>
 </Alloy>

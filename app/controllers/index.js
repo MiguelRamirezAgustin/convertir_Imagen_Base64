@@ -1,12 +1,12 @@
 
 var viewImg= Ti.UI.createImageView({
-	height:'90%',
-	width:'70%',
+	height:'58%',
+	width:'90%',
 	backgroundColor:"#F0FFFF",
 	borderColor:"black",
 	borderRadius:10,
 	borderWidth:1,
-	top:"5%"
+	top:"35%"
 });
 $.viewImage.add(viewImg);
 
@@ -76,6 +76,7 @@ function camaraFotos(){
 		success:function(event){
          
 		var ImageFactory= require('ti.imagefactory');
+		var blob=image;
 		viewImg.image=event.blob;
 			                 
 		newBlob=ImageFactory.compress(blob, 0.25);
@@ -87,21 +88,28 @@ function camaraFotos(){
 		var fDemo=Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,'Demo.txt');
 		fDemo.write(JSON.stringify(newBlob));
 		
-		  /*______________________
-		    var image=event.media;
-		    viewImg.image=event.media;
-		    var base64= Ti.Utils.base64encode(image).toString();
-		    //var base64_De= Ti.Utils.base64decode(base64);
-		    var imageSave=Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,'image.png');
-               //imageSave.write(image);   
-		   // Crear archivo txt y almacena la cadena de imgane a base_64
-		   var f=Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,'Demo.txt');
-		   f.write(JSON.stringify(base64));
-		  --------------------------- */
+		/*______________________
+		var image=event.media;
+		viewImg.image=event.media;
+		var base64= Ti.Utils.base64encode(image).toString();
+		//var base64_De= Ti.Utils.base64decode(base64);
+		var imageSave=Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,'image.png');
+            //imageSave.write(image);   
+		// Crear archivo txt y almacena la cadena de imgane a base_64
+		var f=Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,'Demo.txt');
+		f.write(JSON.stringify(base64));
+		--------------------------- */
              
 		},
 	});
 };
+
+
+function EnviarDatos(e){
+
+
+}
+
 
 
 

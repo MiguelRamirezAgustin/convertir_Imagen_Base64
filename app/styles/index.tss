@@ -3,26 +3,29 @@
 	layout:"vertical"
 }
 
-"#btnGaleria":{
-	width:"32%",
-	height:"20%",
-	backgroundColor:"white",
-	color:"red",
-	borderColor:"red",
-	borderRadius:5,
-	borderWidth:1,
+"#btnCaptura":{
+	width:"13%",
+	height:"30%",
+	borderColor:"#49A4AB",
 	top:"25%",
-	left:"15%"
+	left:"15%",
+	backgroundImage:"/images/camara.png"
 }
 
-"#btnCaptura":{
-      width:"32%",
-	height:"20%",
-	backgroundColor:"white",
-	color:"red",
-	borderColor:"red",
-	borderRadius:5,
-	borderWidth:1,
+"#btnEnviar":{
+	width:"15%",
+	height:"30%",	
+	borderColor:"#49A4AB",
 	top:"25%",
-	left:"15%"
+	left:"15%",
+	backgroundImage:"/images/enviar.png"
+}
+
+"#btnGaleria":{
+      width:"15%",
+	height:"30%",
+	borderColor:"#49A4AB",
+	top:"25%",
+	left:"15%",
+	backgroundImage:"/images/galeria.png"
 }

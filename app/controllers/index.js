@@ -113,7 +113,9 @@ function camaraFotos(){
 			var result=JSON.parse(this.responseText);
 			console.log('Resultado_________ ',result)
 			alert(JSON.stringify(result));
-			
+
+			Alloy.createController('datos').getView().open();
+
 		     },
 		     onsendstream: function(e){
 			Ti.API.info('______Enviando informaciòn:  ' + e.progress);

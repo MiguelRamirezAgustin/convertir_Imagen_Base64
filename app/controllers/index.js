@@ -74,57 +74,31 @@ function camaraFotos(){
 		autohide:false,
 
 		success:function(event){
+         
+		var ImageFactory= require('ti.imagefactory');
+		viewImg.image=event.blob;
+			                 
+		newBlob=ImageFactory.compress(blob, 0.25);
+		var imageSave=Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,'image.png');
+		f=Titanium.Filesystem.getFile(imageSave); 
+		f.write(newBlob);   
+			
+	      // Crear archivo txt y almacena la cadena de imgane a base_64
+		var fDemo=Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,'Demo.txt');
+		fDemo.write(JSON.stringify(newBlob));
+		
+		  /*______________________
 		    var image=event.media;
 		    viewImg.image=event.media;
 		    var base64= Ti.Utils.base64encode(image).toString();
-		    
-		    var base64_De= Ti.Utils.base64decode(base64);
-
+		    //var base64_De= Ti.Utils.base64decode(base64);
 		    var imageSave=Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,'image.png');
                //imageSave.write(image);   
-		    
 		   // Crear archivo txt y almacena la cadena de imgane a base_64
 		   var f=Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,'Demo.txt');
 		   f.write(JSON.stringify(base64));
-
-
-		   /*
-		    var blob1=imageSave.read();
-		    var tempFile=Titanium.Filesystem.createTempFile();
-		    tempFile.write(blob1);
-		    var contants=tempFile.read();
-		    var x =Ti.Utils.base64encode(contants);
-                console.log(x);
-		    */
-		    //var escritura=JSON.parse(x);
-		    //alert(x);
-		     
-
-
-		   // Ti.API.info('el blob:......' + JSON.stringify(blob1, null, 2));
-		    
-		   //var base64=Ti.Utils.base64encode(blob1);
-		   //console.log('imagen:  '+JSON.stringify(base64));
-
-		 
-		    
-		    /*var imagenString=Ti.Utils.base64encode(image).toString('utf8');
-		    console.log('image:   '+imageSave);
-		    
-		    alert(JSON.stringify(imageSave));
-		      */  
-		 
-		    /*
-		    var str_blob= imageSave.read();
-		    alert(str_blob.width);
-		    alert(str_blob.height);
-		    var str_64= Ti.Utils.base64encode(str_blob);
-		    var decodificado=Ti.Utils.base64decode(str_64);
-		    
-		    alert(JSON.stringify(str_64));
-		    console.log(str_64);
-		    alert('Imagend_Decoder_____'+JSON.stringify(decodificado));
-		    console.log(decodificado);*/
+		  --------------------------- */
+             
 		},
 	});
 };
@@ -138,7 +112,7 @@ function validaInternet(){
 		alert('No tienes acceso a intenet');
 	};
 };
-
 validaInternet();
+
 
 $.index.open();

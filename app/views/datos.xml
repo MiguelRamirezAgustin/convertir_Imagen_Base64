@@ -1,8 +1,7 @@
 <Alloy>
 	<Window backgroundColor="#49A4AB">
-		 <View id="viewDatos" backgroundColor="#49A4AB" 
-              height="100%" width="100%" layout="vertical">
-                <Label>Datos</Label>
-              </View>	
+		 <View id="viewDatos" backgroundColor="white" height="100%" width="100%" layout="vertical">
+          
+     </View>	
 	</Window>
 </Alloy>

@@ -32,29 +32,30 @@ function AbrirGaleria(){
 				var jsonss= {
 					source:imagenStrin
 				  };
-				jsonss = JSON.stringify(jsonss);
 
-				console.log('_________', jsonss);
-                        /*------------
-				$.btnEnviar.addEventListener('click',function(e){
-                           var xhr=Ti.Network.createHTTPClient({
-                            onload: function(e){
-				     var result=JSON.parse(this.responseText);
-				     alert(JSON.stringify(result));
-				    },
-				    onerror:function(e){
-				     alert(e.error);
-				     console.log('________miguel____ '+imagenStrin);
-				    },
-				    timeout:5000
-				   });
-				   xhr.open('POST', 'https://ko7afa9vef.execute-api.us-east-2.amazonaws.com/SDA');
-				   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-				   xhr.send({
-                               "source":imagenStrin
-				   });
-				});_____________*/
-			
+				 $.btnEnviar.addEventListener('click', function(){
+					 var xhr=Ti.Network.createHTTPClient({
+						 onload:function(e){
+						  var result=JSON.parse(this.responseText);
+						  console.log('Resultado_________ ',result);
+                                      var informacion=JSON.stringify(result);
+						  Ti.App.Properties.setString('inform', JSON.stringify(informacion));
+						  Alloy.createController('datos', 'informacion').getView().open();
+
+						 },
+						 onsendstream: function(e){
+                                       Ti.API.info('Enviar datos___', e.progress);
+						 },
+						 onerror:function(e){
+                                       alert("Error\n", e.error);
+						 },
+						 timeout:10000
+					  });
+					       xhr.open('POST', 'https://ko7afa9vef.execute-api.us-east-2.amazonaws.com/SDA');
+						 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+						 xhr.send(JSON.stringify(jsonss));
+				 });
+                       
 			}else{
 				
 			}
@@ -110,11 +111,11 @@ function camaraFotos(){
                 var xhr=Ti.Network.createHTTPClient({
                  onload:function(e){
 
-			var result=JSON.parse(this.responseText);
+			var result=JSON.parse(this.responseText); //convertir result a objeto 1_
 			console.log('Resultado_________ ',result)
 			//alert(JSON.stringify(result));
 
-			var informacion= JSON.stringify(result);
+			var informacion= JSON.stringify(result);//variable para convertir a cadena el objeto 2_
 
 			Ti.App.Properties.setString('inform', JSON.stringify(informacion));
 			 

@@ -1,33 +1,66 @@
 
+var args=$.args;
+
+
 setTimeout(function(){
 
-      var datosInformacion= Ti.App.Properties.getString('inform');
-      var objetoProperties=JSON.parse(datosInformacion);
+     var DatosObjeto=args.response;  
 
-       
-      var newObjeto=Object.keys(objetoProperties);
-      var newValue=Object.values(objetoProperties);
+     var formatoObjeto= DatosObjeto;
+      
+     console.log('informe json____'+ formatoObjeto);
 
-      console.log('dato0_______'+objetoProperties);
-       
-      for(var i=0; i<newObjeto.length;  i++){
+ // for (var i=0; i<formatoObjeto.length; i++){
 
-            var newText=newValue[i];
-            newText=newText.replace('_', " ");
-            newText=newText.replace('_', " ");
-            
-          
-            var labelName = Ti.UI.createLabel({
-                  color: "red",
-                  height: Ti.UI.SIZE,
-                  top: 10,
-                  text: newValue[i],
-                  left: 10,
-                  textAlign: 'left' 
-            });
-            
-            $.viewDatos.add(labelName);
-      }
+      var  labeltitulo=Ti.UI.createLabel({
+         color:"white",
+         top:"3%",
+         textAling:Titanium.UI.TEXT_ALIGNMENT_CENTER,
+         text:"INFORMACIÒN",
+         font:{
+               fontSize:18
+         }
+      });
+      var labelNombre =Ti.UI.createLabel({
+            color:"white",
+            top:"7%",
+            left:"5%",
+            text:'NOMBRE: ' + formatoObjeto.data[0].value,
+            height:Ti.UI.SIZE,
+      });
 
+      var labelDomicilio=Ti.UI.createLabel({
+            color:"white",
+            top:"10",
+            left:"5%",
+            text:'DOMICILIO: ' + formatoObjeto.data[1].value,
+      });
+
+      var labelClave= Ti.UI.createLabel({
+           color:"white",
+           top:10,
+           left:"5%",
+           text:"CURP: "+formatoObjeto.data[2].value
+      });
+
+      var labeltext = Ti.UI.createLabel({
+            color: "white",
+            height: Ti.UI.SIZE,
+            top:"15",
+            text:''+formatoObjeto.text,
+            left:"5%",
+            textAling:Titanium.UI.TEXT_ALIGNMENT_JUSTIFY,
+      });
+      
+      $.scrollview.add(labeltitulo);
+      $.scrollview.add(labelNombre);
+      $.scrollview.add(labelDomicilio);
+      $.scrollview.add(labelClave);
+      $.scrollview.add(labeltext);
+
+  //}
 },2000)
+
+
+
 

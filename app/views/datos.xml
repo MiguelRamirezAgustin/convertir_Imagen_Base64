@@ -1,7 +1,9 @@
 <Alloy>
 	<Window backgroundColor="#49A4AB">
-		 <View id="viewDatos" backgroundColor="white" height="100%" width="100%" layout="vertical">
-          
-     </View>	
+		 <View id="viewDatos" backgroundColor="#49A4AB" height="100%" width="100%" layout="vertical">
+                <ScrollView id="scrollview" showVerticalScrollIndicator="true"
+		                layout="vertical" backgroundColor="#49A4AB">
+		    </ScrollView>
+            </View>	
 	</Window>
 </Alloy>

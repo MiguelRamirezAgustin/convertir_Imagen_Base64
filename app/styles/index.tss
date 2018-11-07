@@ -29,3 +29,10 @@
 	left:"15%",
 	backgroundImage:"/images/galeria.png"
 }
+
+"#imgRotar":{
+      width:"7%",
+	height:"7%",
+	top:"5%",
+	image:'/images/rotar.png'
+}

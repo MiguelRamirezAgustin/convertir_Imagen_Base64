@@ -1,17 +1,54 @@
 
-var args=$.args;
+var args = $.args;
+
+var DatosObjeto = args.response;
+var formatoObjeto = DatosObjeto;
+
+var labeltitulo = Ti.UI.createLabel({
+      color: "white",
+      top: "3%",
+      textAling: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+      text: "INFORMACIÒN",
+      font: {
+            fontSize: 18
+      }
+});
+$.scrollview.add(labeltitulo);
+
+for (var i = 0; i < formatoObjeto.data.length; i++) {
+      var labelNombre = Ti.UI.createLabel({
+            color: "white",
+            top: "5%",
+            left: "5%",
+            text: formatoObjeto.data[i].label,
+            height: Ti.UI.SIZE,
+      });
+      var labelDomicilio = Ti.UI.createLabel({
+            color: "white",
+            top: "5",
+            left: "5%",
+            text: formatoObjeto.data[i].value,
+      });
+      $.scrollview.add(labelNombre);
+      $.scrollview.add(labelDomicilio);
+
+}
 
 
-setTimeout(function(){
 
-     var DatosObjeto=args.response;  
-     var formatoObjeto= DatosObjeto;
-      
-     console.log('informe json____'+ formatoObjeto);
 
-   //  for (var i=0; i<formatoObjeto.data.length; i++){
 
-      var  labeltitulo=Ti.UI.createLabel({
+/*var labelDatoss = Ti.UI.createLabel({
+      color: "white",
+      top: "10%",
+      left: "5%",
+      text: formatoObjeto.text[42],
+      textAling: Titanium.UI.TEXT_ALIGNMENT_JUSTIFY,
+});
+$.scrollview.add(labelDatoss);*/
+
+
+ /*--Mostrar datos  ---var  labeltitulo=Ti.UI.createLabel({
          color:"white",
          top:"3%",
          textAling:Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -35,7 +72,7 @@ setTimeout(function(){
             left:"5%",
             text:'DOMICILIO: ' + formatoObjeto.data[1].value,
       });
-
+      
       var labelClave= Ti.UI.createLabel({
            color:"white",
            top:10,
@@ -56,12 +93,6 @@ setTimeout(function(){
       $.scrollview.add(labelNombre);
       $.scrollview.add(labelDomicilio);
       $.scrollview.add(labelClave);
-      $.scrollview.add(labeltext);
- // }
-
- 
-},2000)
-
-
+      $.scrollview.add(labeltext);----Mostrar datos---*/
 
 

@@ -1,12 +1,12 @@
 <Alloy>
 	<Window class="container" backgroundColor="#49A4AB">
 		 <View id="viewImage" backgroundColor="#49A4AB" height="75%" width="100%">
-		 	
+		 	<ImageView id="imgRotar" ></ImageView>
 		 </View>
 		 <View id="viewBotones" backgroundColor="#49A4AB" height="25%" width="100%" 
 		       layout="horizontal">
 		 	 <Button id="btnCaptura" onClick="CapturaFoto"></Button>
-		 	 <Button id="btnEnviar"  ></Button>
+		 	 <Button id="btnEnviar"> </Button>
 		 	 <Button id="btnGaleria" onClick="AbrirGaleria"></Button>
 		 </View>
 	</Window>

@@ -1,15 +1,15 @@
 var ImageFactory = require('ti.imagefactory');
 var seleccionarImagen = false;
 var image;
+var movimiento=0;
 
 var viewImg = Ti.UI.createImageView({
 	height: '80%',
-	width: '90%',
+	width: '85%',
 	backgroundColor: "#F0FFFF",
-	borderColor: "black",
 	borderRadius: 10,
 	borderWidth: 1,
-	rotateTransform: true,
+	borderColor: "white",
 	top: "20%"
 });
 $.viewImage.add(viewImg);
@@ -56,9 +56,11 @@ function camaraFotos() {
 		allowEditing: false,
 		autohide: false,
 		success: function (event) {
-		  image = event.media;
-		  viewImg.setImage(event.media);
-		  seleccionarImagen = true;
+			image = event.media;
+			viewImg.setImage(event.media);
+
+			seleccionarImagen = true;
+
 		},
 	});
 };
@@ -67,18 +69,19 @@ function camaraFotos() {
 
 $.btnEnviar.addEventListener('click', function (e) {
 	if (seleccionarImagen == false) {
-		viewImg.style.setBorderColor("red");
+		viewImg.setBorderColor("red");
+		viewImg.setBackgroundImage(backgroundImage = '/images/descarga.png', height = "10%", width = "10%");
 		alert('No hay imagen para enviar');
 	} else {
 		var xhr = Ti.Network.createHTTPClient({
 			onload: function (e) {
 				var result = JSON.parse(this.responseText);
-				console.log('Resultado_________ ', result)
+				console.log('Resultado_________ ', result);
 
 				var DatosObjeto = {
 					response: JSON.parse(this.responseText)
 				};
-                        //Mandar a pantalla de datos
+				//Mandar a pantalla de datos
 				Alloy.createController('datos', DatosObjeto).getView().open();
 
 			},
@@ -86,7 +89,7 @@ $.btnEnviar.addEventListener('click', function (e) {
 				Ti.API.info('Envio informaciòn____:  ' + e.progress);
 			},
 			onerror: function (e) {
-				alert("La Imagen no es correcta");
+				alert("Volver a intentar");
 			},
 			timeout: 10000
 		});
@@ -111,4 +114,42 @@ $.btnEnviar.addEventListener('click', function (e) {
 	}
 });
 
+
+function rotarfoto(e){
+	var matrix = Ti.UI.create2DMatrix();
+              matrix = matrix.rotate(-90);
+      var a = Ti.UI.createAnimation({
+            transform : matrix,
+	});
+	image.animate(a);
+};
+
+viewImg.addEventListener('click', function(){
+	var matrix = Ti.UI.create2DMatrix();
+              matrix = matrix.rotate(-90);
+      var a = Ti.UI.createAnimation({
+            transform : matrix,
+	});
+	viewImg.animate(a);
+});
+
+
+$.imgRotar.addEventListener('click', function(){
+     rotar();
+     //rotarfoto();
+});
+
+function rotar(e){
+	movimiento =Number(movimiento)+90;
+	var movimientoImagen=ImageFactory.imageWithRotation(image,{
+		degrees:-90,
+	});
+	image=movimientoImagen;
+	viewImg.setImage(image);
+}
+
 $.index.open();
+
+
+//this function sets the chosen image and removes the 4
+//funny faces from the screen

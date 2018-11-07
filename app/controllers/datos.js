@@ -5,12 +5,11 @@ var args=$.args;
 setTimeout(function(){
 
      var DatosObjeto=args.response;  
-
      var formatoObjeto= DatosObjeto;
       
      console.log('informe json____'+ formatoObjeto);
 
- // for (var i=0; i<formatoObjeto.length; i++){
+   //  for (var i=0; i<formatoObjeto.data.length; i++){
 
       var  labeltitulo=Ti.UI.createLabel({
          color:"white",
@@ -21,6 +20,7 @@ setTimeout(function(){
                fontSize:18
          }
       });
+
       var labelNombre =Ti.UI.createLabel({
             color:"white",
             top:"7%",
@@ -57,8 +57,9 @@ setTimeout(function(){
       $.scrollview.add(labelDomicilio);
       $.scrollview.add(labelClave);
       $.scrollview.add(labeltext);
+ // }
 
-  //}
+ 
 },2000)
 
 

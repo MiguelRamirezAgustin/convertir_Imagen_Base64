@@ -52,9 +52,9 @@ function CapturaFoto(e) {
 function camaraFotos() {
 	Ti.Media.showCamera({
 		//Permisos para la camara
-		saveToPhotoGallery: true,
-		allowEditing: false,
-		autohide: false,
+		//saveToPhotoGallery: true,
+		//allowEditing: false,
+		//autohide: false,
 		success: function (event) {
 			image = event.media;
 			viewImg.setImage(event.media);

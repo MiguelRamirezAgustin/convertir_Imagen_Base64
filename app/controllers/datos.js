@@ -31,21 +31,17 @@ for (var i = 0; i < formatoObjeto.data.length; i++) {
       });
       $.scrollview.add(labelNombre);
       $.scrollview.add(labelDomicilio);
-
 }
 
-
-
-
-
-/*var labelDatoss = Ti.UI.createLabel({
+var labeltext = Ti.UI.createLabel({
       color: "white",
-      top: "10%",
-      left: "5%",
-      text: formatoObjeto.text[42],
-      textAling: Titanium.UI.TEXT_ALIGNMENT_JUSTIFY,
+      height: Ti.UI.SIZE,
+      top:"15",
+      text:formatoObjeto.text,
+      left:"5%",
+      textAling:Titanium.UI.TEXT_ALIGNMENT_JUSTIFY,
 });
-$.scrollview.add(labelDatoss);*/
+$.scrollview.add(labeltext);
 
 
  /*--Mostrar datos  ---var  labeltitulo=Ti.UI.createLabel({

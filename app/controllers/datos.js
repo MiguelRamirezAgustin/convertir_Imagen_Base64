@@ -13,7 +13,7 @@ var toast=Ti.UI.createNotification({
      gravity:Titanium.UI.Android.GRAVITY_CLIP_VERTICAL,
 
 });
-toast.show();
+ toast.show();
 };
 
 notificacion();

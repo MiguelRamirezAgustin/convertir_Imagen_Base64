@@ -3,14 +3,15 @@ var seleccionarImagen = false;
 var image;
 var movimiento=0;
 
+
 var viewImg = Ti.UI.createImageView({
-	height: '80%',
+	height: '78%',
 	width: '85%',
 	backgroundColor: "#F0FFFF",
 	borderRadius: 10,
 	borderWidth: 1,
 	borderColor: "white",
-	top: "20%"
+	top: "22%"
 });
 $.viewImage.add(viewImg);
 
@@ -71,7 +72,7 @@ $.btnEnviar.addEventListener('click', function (e) {
 		viewImg.setBackgroundImage(backgroundImage = '/images/descarga.png', height = "10%", width = "10%");
 		alert('No hay imagen para enviar');
 	} else {
-
+		
 		var xhr = Ti.Network.createHTTPClient({
 			onload: function (e) {
 				var result = JSON.parse(this.responseText);
@@ -86,11 +87,13 @@ $.btnEnviar.addEventListener('click', function (e) {
 			},
 			onsendstream: function (e) {
 				Ti.API.info('Envio informaciòn____:  ' + e.progress);
+
 			},
 			onerror: function (e) {
 				alert("Volver a intentar");
+				console.log('Error-------- '+e.error)
 			},
-			timeout: 10000
+			timeout:20000
 		});
 
 		var imagenComprimida = ImageFactory.compress(image, 0.25);
@@ -107,7 +110,7 @@ $.btnEnviar.addEventListener('click', function (e) {
 			"source": base64
 		};
 
-		xhr.open('POST', 'https://ko7afa9vef.execute-api.us-east-2.amazonaws.com/SDA');
+		xhr.open('POST', 'https://7chgh1ve59.execute-api.us-east-2.amazonaws.com/sda-test');
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.send(JSON.stringify(json64));
 	}
@@ -125,7 +128,7 @@ viewImg.addEventListener('click', function(){
 
 
 $.imgRotar.addEventListener('click', function(){
-     rotar();
+	rotar();
 });
 
 //rotar la foto
@@ -137,7 +140,6 @@ function rotar(e){
 	image=movimientoImagen;
 	viewImg.setImage(image);
 }
-
 
 
 $.index.open();

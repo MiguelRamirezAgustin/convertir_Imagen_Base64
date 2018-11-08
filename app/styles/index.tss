@@ -2,7 +2,10 @@
 	backgroundColor:"white",
 	layout:"vertical",
 	borderColor:"white",
-	borderWidth:0.5
+	borderWidth:0.5,
+	orientationModes:[
+		 Titanium.UI.PORTRAIT
+	 ]
 }
 
 "#btnCaptura":{

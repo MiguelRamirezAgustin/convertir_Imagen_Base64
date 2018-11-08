@@ -58,9 +58,7 @@ function camaraFotos() {
 		success: function (event) {
 			image = event.media;
 			viewImg.setImage(event.media);
-
 			seleccionarImagen = true;
-
 		},
 	});
 };
@@ -73,6 +71,7 @@ $.btnEnviar.addEventListener('click', function (e) {
 		viewImg.setBackgroundImage(backgroundImage = '/images/descarga.png', height = "10%", width = "10%");
 		alert('No hay imagen para enviar');
 	} else {
+
 		var xhr = Ti.Network.createHTTPClient({
 			onload: function (e) {
 				var result = JSON.parse(this.responseText);
@@ -115,15 +114,6 @@ $.btnEnviar.addEventListener('click', function (e) {
 });
 
 
-function rotarfoto(e){
-	var matrix = Ti.UI.create2DMatrix();
-              matrix = matrix.rotate(-90);
-      var a = Ti.UI.createAnimation({
-            transform : matrix,
-	});
-	image.animate(a);
-};
-
 viewImg.addEventListener('click', function(){
 	var matrix = Ti.UI.create2DMatrix();
               matrix = matrix.rotate(-90);
@@ -136,9 +126,9 @@ viewImg.addEventListener('click', function(){
 
 $.imgRotar.addEventListener('click', function(){
      rotar();
-     //rotarfoto();
 });
 
+//rotar la foto
 function rotar(e){
 	movimiento =Number(movimiento)+90;
 	var movimientoImagen=ImageFactory.imageWithRotation(image,{
@@ -147,6 +137,8 @@ function rotar(e){
 	image=movimientoImagen;
 	viewImg.setImage(image);
 }
+
+
 
 $.index.open();
 

@@ -4,6 +4,22 @@ var args = $.args;
 var DatosObjeto = args.response;
 var formatoObjeto = DatosObjeto;
 
+//mostrar notificaciones al abrir pantalla
+function notificacion(){
+var toast=Ti.UI.createNotification({
+     message:"El servicio a regresado la infromacion",
+     duration: Ti.UI.NOTIFICATION_DURATION_LONG,
+     backgroundColor:"white",
+     gravity:Titanium.UI.Android.GRAVITY_CLIP_VERTICAL,
+
+});
+toast.show();
+};
+
+notificacion();
+
+console.log('Informacion.... '+DatosObjeto);
+
 var labeltitulo = Ti.UI.createLabel({
       color: "white",
       top: "3%",
@@ -14,7 +30,7 @@ var labeltitulo = Ti.UI.createLabel({
       }
 });
 $.scrollview.add(labeltitulo);
-
+  // siclo for que recorre al json para mostar la informacion
 for (var i = 0; i < formatoObjeto.data.length; i++) {
       var labelNombre = Ti.UI.createLabel({
             color: "white",
@@ -33,16 +49,19 @@ for (var i = 0; i < formatoObjeto.data.length; i++) {
       $.scrollview.add(labelDomicilio);
 }
 
-var labeltext = Ti.UI.createLabel({
+
+
+
+/*var labeltext = Ti.UI.createLabel({
       color: "white",
       height: Ti.UI.SIZE,
       top:"15",
-      text:formatoObjeto.text,
+      text:''+formatoObjeto.text,
       left:"5%",
       textAling:Titanium.UI.TEXT_ALIGNMENT_JUSTIFY,
 });
-$.scrollview.add(labeltext);
-
+$.scrollview.add(labeltext);*/
+ 
 
  /*--Mostrar datos  ---var  labeltitulo=Ti.UI.createLabel({
          color:"white",

@@ -2,39 +2,38 @@
 	backgroundColor:"white",
 	layout:"vertical",
 	borderColor:"white",
-	borderWidth:0.5,
-	 orientationModes:[
-		 Titanium.UI.PORTRAIT
-	 ]
-
+	borderWidth:0.5
 }
 
 "#btnCaptura":{
-	width:"13%",
-	height:"30%",
+	width:"45dp",
+	height:"55dp",
 	borderColor:"#49A4AB",
 	top:"25%",
 	left:"15%",
 	backgroundImage:"/images/camara.png"
 }
 
+
 "#btnEnviar":{
-	width:"15%",
-	height:"30%",	
+	width:"45dp",
+	height:"55dp",	
 	borderColor:"#49A4AB",
 	top:"25%",
 	left:"15%",
 	backgroundImage:"/images/enviar.png"
 }
 
+
 "#btnGaleria":{
-      width:"15%",
-	height:"30%",
+      width:"45dp",
+	height:"55dp",
 	borderColor:"#49A4AB",
 	top:"25%",
 	left:"15%",
 	backgroundImage:"/images/galeria.png"
 }
+
 
 "#imgRotar":{
       width:"7%",

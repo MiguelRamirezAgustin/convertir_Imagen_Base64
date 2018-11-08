@@ -1,5 +1,5 @@
 <Alloy>
-	<Window backgroundColor="#49A4AB">
+	<Window backgroundColor="#49A4AB" id="windowsDatos">
 		 <View id="viewDatos" backgroundColor="#49A4AB" height="100%" width="100%" layout="vertical">
                 <ScrollView id="scrollview" showVerticalScrollIndicator="true"
 		                layout="vertical" backgroundColor="#49A4AB">

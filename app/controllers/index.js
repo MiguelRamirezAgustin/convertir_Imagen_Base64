@@ -5,8 +5,8 @@ var movimiento=0;
 
 
 var viewImg = Ti.UI.createImageView({
-	height: '80%', //480  80
-	width: '85%',    //350   85
+	height: '78%', //480  80
+	width: '83%',    //350   85
 	backgroundColor: "#F0FFFF",
 	borderRadius: 10,
 	borderWidth: 1,
@@ -68,8 +68,6 @@ function camaraFotos() {
 		},
 	});
 };
-
-
 
 
 

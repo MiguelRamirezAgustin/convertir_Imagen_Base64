@@ -5,17 +5,17 @@ var movimiento=0;
 
 
 var viewImg = Ti.UI.createImageView({
-	height: '78%',
-	width: '85%',
+	height: '80%', //480  80
+	width: '85%',    //350   85
 	backgroundColor: "#F0FFFF",
 	borderRadius: 10,
 	borderWidth: 1,
 	borderColor: "white",
-	top: "22%"
+	top: "17%"
 });
 $.viewImage.add(viewImg);
 
-//Abrir Galeria y mostar foto 
+/*Abrir Galeria y mostar foto*/ 
 function AbrirGaleria() {
 	Titanium.Media.openPhotoGallery({
 		mediaTypes: [Ti.Media.MEDIA_TYPE_PHOTO],
@@ -23,7 +23,10 @@ function AbrirGaleria() {
 		success: function (event) {
 			if (event.mediaTypes == Ti.MEDIA_TYPE_PHOTO) {
 				image = event.media;
-				viewImg.setImage(event.media);
+				//viewImg.setImage(event.media);
+				viewImg.image=image;
+				viewImg.width=Ti.UI.SIZE,
+				viewImg.height=Ti.UI.SIZE,
 				seleccionarImagen = true;
 
 			} else {
@@ -58,7 +61,9 @@ function camaraFotos() {
 		//autohide: false,
 		success: function (event) {
 			image = event.media;
-			viewImg.setImage(event.media);
+			viewImg.image=image;
+			viewImg.width=Ti.UI.SIZE,
+			viewImg.height=Ti.UI.SIZE,
 			seleccionarImagen = true;
 		},
 	});
@@ -66,10 +71,14 @@ function camaraFotos() {
 
 
 
+
+
 $.btnEnviar.addEventListener('click', function (e) {
 	if (seleccionarImagen == false) {
 		viewImg.setBorderColor("red");
-		viewImg.setBackgroundImage(backgroundImage = '/images/descarga.png', height = "10%", width = "10%");
+		viewImg.setBackgroundImage(backgroundImage = '/images/descarga.png, Height="10%", Width="20%"'),
+		//viewImg.setHeight(height = "10%"),
+		//viewImg.setWidth(width = "10%"),
 		alert('No hay imagen para enviar');
 	} else {
 		
@@ -91,7 +100,7 @@ $.btnEnviar.addEventListener('click', function (e) {
 			},
 			onerror: function (e) {
 				alert("Volver a intentar");
-				console.log('Error-------- '+e.error)
+				console.log('Error-------- '+e.error);
 			},
 			timeout:20000
 		});
@@ -117,21 +126,21 @@ $.btnEnviar.addEventListener('click', function (e) {
 });
 
 
-viewImg.addEventListener('click', function(){
+/*viewImg.addEventListener('click', function(){
 	var matrix = Ti.UI.create2DMatrix();
               matrix = matrix.rotate(-90);
       var a = Ti.UI.createAnimation({
             transform : matrix,
 	});
 	viewImg.animate(a);
-});
+});*/
 
 
 $.imgRotar.addEventListener('click', function(){
 	rotar();
 });
 
-//rotar la foto
+//rotar la foto +click en boton+
 function rotar(e){
 	movimiento =Number(movimiento)+90;
 	var movimientoImagen=ImageFactory.imageWithRotation(image,{
@@ -139,8 +148,20 @@ function rotar(e){
 	});
 	image=movimientoImagen;
 	viewImg.setImage(image);
+	viewImg.setTop(top="35%");
 }
 
+
+//rotar imagen +clik en la vista+
+viewImg.addEventListener('click', function(){
+	movimiento =Number(movimiento)+90;
+	var movimientoImagen=ImageFactory.imageWithRotation(image,{
+		degrees:-90,
+	});
+	image=movimientoImagen;
+	viewImg.setImage(image);
+	viewImg.setTop(top="35%");
+});
 
 $.index.open();
 

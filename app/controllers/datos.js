@@ -15,8 +15,9 @@ var toast=Ti.UI.createNotification({
 });
  toast.show();
 };
-
 notificacion();
+
+
 
 console.log('Informacion.... '+DatosObjeto);
 

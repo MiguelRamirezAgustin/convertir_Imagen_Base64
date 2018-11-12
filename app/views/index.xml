@@ -1,6 +1,6 @@
 <Alloy>
 	<Window class="container" backgroundColor="#49A4AB">
-		 <View id="viewImage" backgroundColor="#49A4AB" height="75%" width="100%">
+		 <View id="viewImage" backgroundColor="#49A4AB" height="75%">
 		 	<ImageView id="imgRotar" ></ImageView>
 		 </View>
 		 <View id="viewBotones" backgroundColor="#49A4AB" height="25%" width="100%" 

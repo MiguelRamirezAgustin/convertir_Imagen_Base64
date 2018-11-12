@@ -10,7 +10,7 @@
 
 "#btnCaptura":{
 	width:"45dp",
-	height:"55dp",
+	height:"53dp",
 	borderColor:"#49A4AB",
 	top:"25%",
 	left:"15%",
@@ -29,7 +29,7 @@
 
 
 "#btnGaleria":{
-      width:"45dp",
+      width:"44dp",
 	height:"55dp",
 	borderColor:"#49A4AB",
 	top:"25%",

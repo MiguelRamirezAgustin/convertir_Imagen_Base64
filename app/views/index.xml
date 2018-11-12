@@ -1,7 +1,9 @@
 <Alloy>
 	<Window class="container" backgroundColor="#49A4AB">
 		 <View id="viewImage" backgroundColor="#49A4AB" height="75%">
+		      <Label top="5%" left="3%" text="Fallados:" id="labelcontadorFallados"></Label>
 		 	<ImageView id="imgRotar" ></ImageView>
+		      <Label top="5%" left="75%" text="Exitosos:" id="labelcontadorExitoso"></Label>
 		 </View>
 		 <View id="viewBotones" backgroundColor="#49A4AB" height="25%" width="100%" 
 		       layout="horizontal">

@@ -2,6 +2,8 @@ var ImageFactory = require('ti.imagefactory');
 var seleccionarImagen = false;
 var image;
 var movimiento=0;
+var contadorF=1;
+var contadorE=1;
 
 
 var viewImg = Ti.UI.createImageView({
@@ -23,7 +25,6 @@ function AbrirGaleria() {
 		success: function (event) {
 			if (event.mediaTypes == Ti.MEDIA_TYPE_PHOTO) {
 				image = event.media;
-				//viewImg.setImage(event.media);
 				viewImg.image=image;
 				viewImg.width=Ti.UI.SIZE,
 				viewImg.height=Ti.UI.SIZE,
@@ -72,9 +73,10 @@ function camaraFotos() {
 
 
 $.btnEnviar.addEventListener('click', function (e) {
+
 	if (seleccionarImagen == false) {
 		viewImg.setBorderColor("red");
-		viewImg.setBackgroundImage(backgroundImage = '/images/descarga.png, Height="10%", Width="20%"'),
+		viewImg.setBackgroundImage(backgroundImage = '/images/descarga.png', height="10%", width="20%"),
 		//viewImg.setHeight(height = "10%"),
 		//viewImg.setWidth(width = "10%"),
 		alert('No hay imagen para enviar');
@@ -84,7 +86,8 @@ $.btnEnviar.addEventListener('click', function (e) {
 			onload: function (e) {
 				var result = JSON.parse(this.responseText);
 				console.log('Resultado_________ ', result);
-
+                        //contador
+				$.labelcontadorExitoso.setText(text='Exitosos:\n'+contadorE++);
 				var DatosObjeto = {
 					response: JSON.parse(this.responseText)
 				};
@@ -99,6 +102,8 @@ $.btnEnviar.addEventListener('click', function (e) {
 			onerror: function (e) {
 				alert("Volver a intentar");
 				console.log('Error-------- '+e.error);
+				//contador
+				$.labelcontadorFallados.setText(text='Fallados:\n'+ contadorF++);
 			},
 			timeout:20000
 		});

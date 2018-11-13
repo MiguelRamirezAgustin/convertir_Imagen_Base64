@@ -151,7 +151,7 @@ function rotar(e){
 	});
 	image=movimientoImagen;
 	viewImg.setImage(image);
-	viewImg.setTop(top="35%");
+	//viewImg.setTop(top="35%");
 }
 
 
@@ -163,7 +163,7 @@ viewImg.addEventListener('click', function(){
 	});
 	image=movimientoImagen;
 	viewImg.setImage(image);
-	viewImg.setTop(top="35%");
+	//viewImg.setTop(top="35%");
 });
 
 $.index.open();
